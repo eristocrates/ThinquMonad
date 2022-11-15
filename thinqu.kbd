@@ -1,0 +1,92 @@
+#| --------------------------------------------------------------------------
+
+                         KMonad: US ansi 100% template
+
+  This file contains the `defsrc` configuration for a standard US-ansi 100%
+  keyboard. Modelled on a standard DAS-keyboard 100%. Copy out the 'defsrc'
+  layer to start your own keyboard configuration. Copy out the `deflayer`
+  template to easily start a new layer with matching `transparent` buttons.
+
+
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+  _    _    _              _              _    _    _    _               _    _    _     _    _   
+)
+
+
+
+  -------------------------------------------------------------------------- |#
+
+
+
+(defcfg
+  input (low-level-hook)
+  output (send-event-sink)
+  fallthrough true
+  allow-cmd false
+)
+
+(defalias
+  pip |
+  th (around t h)
+  Th (around T h)
+  qu (around q u)
+  in (around i n)
+  tn (around t (around i (around o n)))
+  lat (around lalt tab)
+  and (around a (around n d))
+  thsh (layer-toggle thinqush)
+  thla (layer-toggle thinqula)
+  thra (layer-toggle thinqura)
+  shf (around @thsh lsft)
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.
+)
+
+
+(deflayer thinqu
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    @pip 6    7    8    9    0    grv  _     _    _    _     _    _    _    _
+  _    b    d    l    @th  v    z    '    \(   u    h    k    \)   \     _    _    _     _    _    _    _
+  bspc n    t    s    r    w    =    y    a    e    o    i    _                          _    _    _
+ @thsh x    g    m    c    ;    j    f    p    ,    .    @thsh                _          _    _    _    _
+  _    _    @thla           _            @thra _    _    _               _    _    _     _    _   
+)
+
+(deflayer thinqush
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    !    @    #    $    %    @pip ^    &    *    +    kp-  ~    _     _    _    _     _    _    _    _
+  _    B    D    L    @Th  V    Z    "    {    U    H    K    }    kp/   _    _    _     _    _    _    _
+  _    N    T    S    R    W    ?    Y    A    E    O    I    _                          _    _    _
+  lsft X    G    M    C    :    J    F    P    <    >    rsft                 _          _    _    _    _
+  _    _    _              _              _    _    _    _               _    _    _     _    _   
+)
+
+(deflayer thinqula
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  @lat _    _    _    _    _    _    _    [    _    _    _    ]    _     _    _    _     _    _    _    _
+  caps _    _    _    q    _    _    @tn  @in  _    _    _    _                          _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    rsft                 _          _    _    _    _
+  _    _    _              \_             ralt _    _    _               _    _    _     _    _   
+)
+
+(deflayer thinqura
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    @qu  @and _    _    @in  _    _    _    _                          _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    rsft                 _          _    _    _    _
+  _    _    lalt           \_             _    _    _    _               _    _    _     _    _   
+)
